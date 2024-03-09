@@ -1,0 +1,32 @@
+The idea for this project is to create a multiplayer basic tic-tac-toe command line game coded in C.  I will create
+a github repo for this project so I can work on it both on my mac and on my laptop running linux.  Some of the most 
+important concepts I plan to use for this project include arrays, some version of a hashmap, functions, conditionals,
+while loops, possibly dynamic memory allocation, and just a basic gui for the game using text from the keyboard for 
+the game board, such as |, -, O, and X.  Hopefully coding this won't take too long, I can fix bugs as I go, and I 
+will become more familiar with C syntax and it's features such as pointers, malloc, and header files.  
+
+
+
+High level overview of the program and how I want to structure it:
+
+-A function playGame() that runs in the main function and incorporates all of my helper functions
+- A function updateBoard() that takes either a 9 element or 3x3 array initialized with all 0's,
+and that updates an index to 1 once that position is chosen by either player. It will also update
+the visual board by adding a corresponding X or O to that position.
+- A function checkTileIsEmpty() that prevents a player from overriding an already filled tile
+- A function checkIfWon() that checks to see if either player has three tiles in a row, and
+if so ends the game
+- Two structs for player 1 and player 2 that mark their positions, whether they are O or X,
+and some other data that I have not thought of yet.
+- A function readInput() that will use scanf() to get the position that either player wants
+to make their next move with. Their input will be denoted by the column (A, B, or C) of their
+intended move followed by the row (1 , 2, or 3) of their intended move.
+
+
+
+--------------------------------------------------------------------------------------------
+
+I will probably start writing most of my functions in the main program first, testing them as I go,
+and then when I like them (or deem them sufficient for the time being) I can move their declarations
+(and possibly their bodies) to my header file. Without further ado, lets start coding! (I will continously
+update this page as I add/remove functions and to check them off if I have finished writing them).
