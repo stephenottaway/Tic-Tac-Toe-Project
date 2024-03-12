@@ -4,7 +4,7 @@
 #define MAX_STRING_LENGTH 100
 #define BOARD_SIZE 9
 
-/*TO DO: Add function to check if game is over, get rid of initialization functions (will find solution to those later), add function to modify string for board printing, and add function to check if a tile is empty */
+/*TO DO: Get rid of initialization functions (will find solution to those later), add function to modify string for board printing */
 
 char board[] = "_a[0]__|_a[1]__|_a[2]__\n_a[3]__|_a[4]__|_a[5]__\n a[6]  | a[7]  | a[8]  \n";
 
@@ -21,7 +21,7 @@ typedef struct {
 } Player;
 
 
-// VERY BAD IN CURRENT STATE! C WON'T THROW AN ERROR IF THE METHOD IS PASSED AN ARRAY WITH LESS THAN 9 ELEMENTS AND WILL ACCESS DATA THAT IT SHOULDN'T BE ABLE TO GET! (when only pointer to gameState was passed into the function)
+// VERY BAD IN CURRENT STATE! C WON'T THROW AN ERROR IF THE METHOD IS PASSED AN ARRAY WITH LESS THAN 9 ELEMENTS AND WILL ACCESS DATA THAT IT SHOULDN'T BE ABLE TO ACCESS! (when only pointer to gameState was passed into the function)
 // Temporary fix (may think of something better later) by passing in size of array into method parameters
 int checkForFullBoard(int* gameState, size_t size) {
     if(size != BOARD_SIZE) {
@@ -37,11 +37,18 @@ int checkForThreeInARow(int* board, size_t size) {
 	printf("Error: size of array must be 9\n");
 	return 0;
     }
-    // TO DO: Add all possible combinations of three in a row that would end the game (may store as ints later to clean up the code, separating into three in a row on the rows, the columns, and along the diagonals)
+    // May store as ints later to clean up the code, separating into three in a row on the rows, the columns, and along the diagonals
     return ((board[0] && board[1] && board[2]) || (board[3] && board[4] && board[5]) || (board[6] && board[7] && board[8]) || (board[0] && board[3] && board[6]) || (board[1] && board[4] && board[7]) || (board[2] && board[5] && board[8])
     || (board[0] && board[4] && board[8]) || (board[2] && board[4] && board[6]));
 }
 
+int checkIfEmptyTile(int* gameState, int index) {
+    if(index < 0 || index > BOARD_SIZE-1) {
+	printf("Error: index must be within array bounds\n");
+	return 0;
+    }
+    return !gameState[index];
+}
 
 // Comment out unused/incorrect methods for now
 /*void displayBoard(char* board) {
@@ -69,6 +76,5 @@ int main(int argc, char** argv) {
 	printf("Program initialization failed\n");
 	return 1;
     }
-    
     return 0;
 } 

@@ -2,4 +2,4 @@
 
 3/3 - 1:45
 3/9 - 1:30 (Made little to no progress)
-3/11 - 
+3/11 - ~3:00 (Tested and implemented some functions to check if the game is over, as well as to check if a given tile is empty)
